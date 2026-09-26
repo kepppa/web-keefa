@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Rifky Keefa Ramadhan — TKJ</title>
+    <title>Keefa — TKJ Portfolio</title>
 
     <style>
         * {
@@ -14,695 +13,457 @@
             scroll-behavior: smooth;
         }
 
-        :root {
-            --bg: #070b12;
-            --card: #0d131d;
-            --line: #1c2633;
-            --text: #edf2f7;
-            --muted: #8b98a8;
-            --blue: #3b82f6;
-            --cyan: #22d3ee;
-        }
-
         body {
-            font-family: Inter, Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            background: #050816;
+            color: #e8eefc;
             overflow-x: hidden;
         }
 
-        /* =========================
-           BACKGROUND
-        ========================= */
+        /* BACKGROUND */
+        .background {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(0, 174, 255, .12), transparent 30%),
+                radial-gradient(circle at 85% 70%, rgba(120, 60, 255, .12), transparent 30%),
+                #050816;
+        }
 
         .grid {
             position: fixed;
             inset: 0;
+            z-index: -1;
+            opacity: .18;
             background-image:
-                linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+                linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
             background-size: 45px 45px;
             mask-image: linear-gradient(to bottom, black, transparent);
-            pointer-events: none;
-            z-index: -3;
         }
 
-        .glow {
+        /* PARTICLES */
+        .particles span {
             position: fixed;
-            width: 350px;
-            height: 350px;
-            background: #2563eb;
-            filter: blur(160px);
-            opacity: .12;
-            top: 10%;
-            left: -150px;
-            z-index: -2;
-            animation: moveGlow 8s ease-in-out infinite alternate;
+            width: 3px;
+            height: 3px;
+            background: #00d9ff;
+            border-radius: 50%;
+            opacity: .6;
+            animation: float 8s infinite ease-in-out;
         }
 
-        .glow2 {
-            position: fixed;
-            width: 300px;
-            height: 300px;
-            background: #06b6d4;
-            filter: blur(150px);
-            opacity: .08;
-            right: -120px;
-            bottom: 10%;
-            z-index: -2;
-            animation: moveGlow2 10s ease-in-out infinite alternate;
+        .particles span:nth-child(1){left:10%;top:30%;animation-delay:0s}
+        .particles span:nth-child(2){left:25%;top:70%;animation-delay:2s}
+        .particles span:nth-child(3){left:45%;top:20%;animation-delay:4s}
+        .particles span:nth-child(4){left:65%;top:80%;animation-delay:1s}
+        .particles span:nth-child(5){left:85%;top:35%;animation-delay:3s}
+        .particles span:nth-child(6){left:92%;top:75%;animation-delay:5s}
+
+        @keyframes float {
+            0%,100% { transform: translateY(0); opacity:.3; }
+            50% { transform: translateY(-35px); opacity:1; }
         }
 
-        @keyframes moveGlow {
-            from { transform: translateY(0); }
-            to { transform: translateY(180px); }
-        }
-
-        @keyframes moveGlow2 {
-            from { transform: translateY(0); }
-            to { transform: translateY(-150px); }
-        }
-
-        /* =========================
-           NAVBAR
-        ========================= */
-
+        /* NAVBAR */
         nav {
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
             height: 72px;
-            padding: 0 8%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-
-            background: rgba(7,11,18,.72);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255,255,255,.06);
-
-            z-index: 1000;
+            justify-content: space-between;
+            padding: 0 8%;
+            background: rgba(5,8,22,.72);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,.07);
+            z-index: 100;
         }
 
         .logo {
-            font-size: 21px;
+            font-size: 25px;
             font-weight: 800;
             letter-spacing: -1px;
         }
 
         .logo span {
-            color: var(--cyan);
+            color: #00d9ff;
         }
 
         nav ul {
-            list-style: none;
             display: flex;
             gap: 30px;
+            list-style: none;
         }
 
         nav a {
-            color: #9da8b6;
+            color: #aab4ca;
             text-decoration: none;
             font-size: 14px;
             transition: .3s;
         }
 
         nav a:hover {
-            color: white;
+            color: #00d9ff;
         }
 
-        /* =========================
-           HERO
-        ========================= */
-
+        /* HERO */
         .hero {
             min-height: 100vh;
-            padding: 150px 8% 80px;
-
-            display: flex;
+            padding: 140px 8% 80px;
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
             align-items: center;
-            justify-content: center;
-
-            position: relative;
+            gap: 70px;
         }
 
-        .hero-content {
-            width: 100%;
-            max-width: 1050px;
-        }
-
-        .status {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-
-            border: 1px solid var(--line);
-            background: rgba(255,255,255,.025);
-
-            padding: 8px 14px;
-            border-radius: 50px;
-
-            color: #9da8b6;
+        .tag {
+            display: inline-block;
+            padding: 9px 14px;
+            border: 1px solid rgba(0,217,255,.3);
+            border-radius: 30px;
+            color: #00d9ff;
             font-size: 13px;
-
-            animation: fadeDown .8s ease forwards;
-        }
-
-        .status-dot {
-            width: 7px;
-            height: 7px;
-            background: #22c55e;
-            border-radius: 50%;
-            box-shadow: 0 0 12px #22c55e;
+            margin-bottom: 25px;
+            background: rgba(0,217,255,.05);
         }
 
         .hero h1 {
-            margin-top: 28px;
-
-            font-size: clamp(48px, 8vw, 92px);
-            line-height: .98;
+            font-size: clamp(55px, 8vw, 100px);
+            line-height: .95;
             letter-spacing: -5px;
-
-            max-width: 900px;
-
-            animation: fadeUp .9s ease forwards;
+            margin-bottom: 25px;
         }
 
         .hero h1 span {
-            color: var(--cyan);
+            color: #00d9ff;
         }
 
-        .hero-subtitle {
-            margin-top: 28px;
-            max-width: 650px;
-
-            color: var(--muted);
-            font-size: 18px;
+        .hero p {
+            color: #8995ad;
+            font-size: 17px;
             line-height: 1.8;
-
-            animation: fadeUp 1.1s ease forwards;
+            max-width: 650px;
         }
 
-        .typing {
-            color: white;
-            border-right: 2px solid var(--cyan);
-            padding-right: 5px;
-        }
-
-        .hero-buttons {
+        .buttons {
             margin-top: 35px;
-
             display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-
-            animation: fadeUp 1.3s ease forwards;
+            gap: 15px;
         }
 
         .btn {
+            padding: 13px 22px;
+            border-radius: 9px;
             text-decoration: none;
-            padding: 13px 21px;
-            border-radius: 8px;
-            font-size: 14px;
             font-weight: 600;
             transition: .3s;
         }
 
-        .btn-primary {
-            background: white;
-            color: #05080d;
+        .primary {
+            color: #001018;
+            background: #00d9ff;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(255,255,255,.12);
+        .primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,217,255,.25);
         }
 
-        .btn-outline {
-            color: white;
-            border: 1px solid var(--line);
-            background: rgba(255,255,255,.025);
+        .secondary {
+            color: #dce5f5;
+            border: 1px solid #263149;
         }
 
-        .btn-outline:hover {
-            border-color: #405064;
-            transform: translateY(-3px);
+        .secondary:hover {
+            border-color: #00d9ff;
         }
 
-        /* =========================
-           HERO INFO
-        ========================= */
-
-        .quick-info {
-            margin-top: 70px;
-
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-
-            max-width: 750px;
-
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
-
-            animation: fadeUp 1.5s ease forwards;
+        /* TERMINAL */
+        .terminal {
+            background: rgba(10,15,31,.9);
+            border: 1px solid #202b42;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0,0,0,.35);
+            animation: levitate 5s ease-in-out infinite;
         }
 
-        .quick-item {
-            padding: 22px 25px;
-            border-right: 1px solid var(--line);
+        @keyframes levitate {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
-        .quick-item:last-child {
-            border-right: none;
+        .terminal-head {
+            padding: 13px 17px;
+            border-bottom: 1px solid #202b42;
+            display: flex;
+            gap: 7px;
         }
 
-        .quick-item small {
-            display: block;
-            color: #657384;
-            margin-bottom: 7px;
-            font-size: 12px;
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #39445b;
         }
 
-        .quick-item strong {
-            font-size: 15px;
+        .terminal-body {
+            padding: 25px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            line-height: 2;
+            color: #91a0bb;
         }
 
-        /* =========================
-           SECTIONS
-        ========================= */
+        .cyan { color: #00d9ff; }
+        .green { color: #6ee7a0; }
+        .purple { color: #b18cff; }
 
+        /* SECTIONS */
         section {
-            padding: 110px 8%;
-        }
-
-        .section-container {
-            max-width: 1050px;
-            margin: auto;
-        }
-
-        .section-label {
-            color: var(--cyan);
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
+            padding: 100px 8%;
         }
 
         .section-title {
-            font-size: 42px;
-            letter-spacing: -2px;
-            margin-bottom: 18px;
+            margin-bottom: 50px;
         }
 
-        .section-desc {
-            color: var(--muted);
-            max-width: 650px;
+        .section-title small {
+            color: #00d9ff;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            margin-top: 8px;
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(10,15,31,.7);
+            border: 1px solid #202b42;
+            border-radius: 14px;
+            padding: 30px;
+            transition: .35s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0,217,255,.4);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #8995ad;
             line-height: 1.8;
         }
 
-        /* =========================
-           ABOUT
-        ========================= */
-
-        .about-grid {
-            margin-top: 50px;
-
+        .info {
             display: grid;
-            grid-template-columns: 1.3fr .7fr;
-            gap: 20px;
-        }
-
-        .about-card {
-            background: var(--card);
-            border: 1px solid var(--line);
-            border-radius: 14px;
-            padding: 30px;
-
-            transition: .35s;
-        }
-
-        .about-card:hover {
-            border-color: #304154;
-            transform: translateY(-5px);
-        }
-
-        .about-card h3 {
-            font-size: 19px;
-            margin-bottom: 18px;
-        }
-
-        .about-card p {
-            color: var(--muted);
-            line-height: 1.9;
-            font-size: 15px;
-        }
-
-        .data-list {
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
             margin-top: 20px;
         }
 
-        .data {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-
-            padding: 14px 0;
-            border-bottom: 1px solid var(--line);
-
-            font-size: 14px;
+        .info div {
+            padding: 15px;
+            background: #080d1d;
+            border-radius: 8px;
+            border: 1px solid #182137;
         }
 
-        .data span:first-child {
-            color: #657384;
+        .info small {
+            color: #65718b;
         }
 
-        /* =========================
-           SKILLS
-        ========================= */
+        .info strong {
+            display: block;
+            margin-top: 5px;
+        }
 
-        .skills-grid {
-            margin-top: 50px;
-
+        /* SKILLS */
+        .skills {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
         .skill {
-            background: var(--card);
-            border: 1px solid var(--line);
+            padding: 22px;
+            background: rgba(10,15,31,.7);
+            border: 1px solid #202b42;
             border-radius: 12px;
-            padding: 25px;
+        }
 
-            transition: .35s;
-            position: relative;
+        .skill-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .bar {
+            height: 6px;
+            background: #151d31;
+            border-radius: 20px;
             overflow: hidden;
         }
 
-        .skill::after {
-            content: "";
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background: var(--blue);
-            filter: blur(70px);
-            opacity: 0;
-            right: -50px;
-            bottom: -50px;
-            transition: .4s;
+        .bar span {
+            display: block;
+            height: 100%;
+            width: 0;
+            background: #00d9ff;
+            animation: load 1.5s forwards;
         }
 
-        .skill:hover {
-            transform: translateY(-6px);
-            border-color: #33475c;
+        .w85 { --width:85%; }
+        .w75 { --width:75%; }
+        .w70 { --width:70%; }
+        .w65 { --width:65%; }
+
+        @keyframes load {
+            to { width: var(--width); }
         }
 
-        .skill:hover::after {
-            opacity: .2;
-        }
-
-        .skill-number {
-            color: #526274;
-            font-size: 12px;
-            margin-bottom: 25px;
-        }
-
-        .skill h3 {
-            font-size: 17px;
-            margin-bottom: 10px;
-        }
-
-        .skill p {
-            color: var(--muted);
-            line-height: 1.7;
-            font-size: 14px;
-        }
-
-        /* =========================
-           PROJECTS
-        ========================= */
-
+        /* PROJECT */
         .projects {
-            margin-top: 50px;
-
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
         }
 
         .project {
-            padding: 30px;
-
-            background: var(--card);
-            border: 1px solid var(--line);
+            min-height: 230px;
+            padding: 28px;
             border-radius: 14px;
-
+            background: linear-gradient(145deg,#0c1326,#080c19);
+            border: 1px solid #202b42;
             transition: .35s;
         }
 
         .project:hover {
-            transform: translateY(-6px);
-            border-color: #36506a;
-        }
-
-        .project-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
+            transform: translateY(-8px);
+            border-color: #00d9ff;
         }
 
         .project-number {
-            color: #526274;
-            font-size: 12px;
-        }
-
-        .project-arrow {
-            color: var(--cyan);
-            font-size: 20px;
-            transition: .3s;
-        }
-
-        .project:hover .project-arrow {
-            transform: translate(4px,-4px);
+            color: #3d4b68;
+            font-family: monospace;
+            font-size: 13px;
         }
 
         .project h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
+            margin: 30px 0 12px;
         }
 
         .project p {
-            color: var(--muted);
-            line-height: 1.7;
+            color: #8995ad;
+            line-height: 1.6;
             font-size: 14px;
         }
 
-        .tags {
+        .tech {
             margin-top: 20px;
             display: flex;
-            gap: 7px;
+            gap: 8px;
             flex-wrap: wrap;
         }
 
-        .tag {
-            border: 1px solid var(--line);
+        .tech span {
             padding: 5px 9px;
-            border-radius: 5px;
-            color: #7f8b9b;
             font-size: 11px;
+            border-radius: 5px;
+            background: #111a30;
+            color: #71809d;
         }
 
-        /* =========================
-           JOURNEY
-        ========================= */
-
-        .timeline {
-            margin-top: 50px;
-            border-left: 1px solid #263241;
-            padding-left: 30px;
+        /* STATUS */
+        .status {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
         }
 
-        .timeline-item {
-            position: relative;
-            padding-bottom: 40px;
+        .status-box {
+            padding: 25px;
+            border: 1px solid #202b42;
+            background: rgba(10,15,31,.7);
+            border-radius: 12px;
         }
 
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: var(--cyan);
-            border-radius: 50%;
-            left: -35px;
-            top: 5px;
-            box-shadow: 0 0 15px rgba(34,211,238,.6);
+        .status-box strong {
+            font-size: 30px;
+            display: block;
+            margin-bottom: 7px;
         }
 
-        .timeline-item small {
-            color: var(--cyan);
+        .online {
+            color: #6ee7a0;
         }
 
-        .timeline-item h3 {
-            margin: 8px 0;
+        .muted {
+            color: #68758e;
+            font-size: 13px;
         }
 
-        .timeline-item p {
-            color: var(--muted);
-            line-height: 1.7;
-            max-width: 650px;
-        }
-
-        /* =========================
-           CONTACT
-        ========================= */
-
-        .contact-box {
-            margin-top: 45px;
-
-            border: 1px solid var(--line);
-            background: linear-gradient(
-                120deg,
-                rgba(34,211,238,.06),
-                rgba(59,130,246,.03)
-            );
-
-            border-radius: 16px;
-            padding: 45px;
-            text-align: center;
-        }
-
-        .contact-box h2 {
-            font-size: 36px;
-            margin-bottom: 15px;
-        }
-
-        .contact-box p {
-            color: var(--muted);
-            line-height: 1.8;
-            max-width: 600px;
-            margin: auto;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
+        /* FOOTER */
         footer {
-            border-top: 1px solid var(--line);
-            padding: 30px 8%;
+            padding: 50px 8%;
+            border-top: 1px solid #182137;
+            color: #65718b;
             display: flex;
             justify-content: space-between;
-            color: #5e6b7b;
-            font-size: 12px;
         }
 
-        footer span {
-            color: #aab5c3;
+        /* CURSOR */
+        .cursor {
+            position: fixed;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            pointer-events: none;
+            background: radial-gradient(circle, rgba(0,217,255,.07), transparent 65%);
+            transform: translate(-50%,-50%);
+            z-index: -1;
         }
 
-        /* =========================
-           ANIMATION
-        ========================= */
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(25px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeDown {
-            from {
-                opacity: 0;
-                transform: translateY(-15px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: 0.8s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 800px) {
-
-            nav {
-                padding: 0 5%;
-            }
-
-            nav ul {
-                display: none;
-            }
+        /* RESPONSIVE */
+        @media(max-width:850px) {
+            nav ul { display:none; }
 
             .hero {
-                padding: 130px 5% 70px;
+                grid-template-columns: 1fr;
+            }
+
+            .about,
+            .skills {
+                grid-template-columns: 1fr;
+            }
+
+            .projects,
+            .status {
+                grid-template-columns: 1fr;
             }
 
             .hero h1 {
-                font-size: 52px;
-                letter-spacing: -3px;
-            }
-
-            .hero-subtitle {
-                font-size: 16px;
-            }
-
-            .quick-info {
-                grid-template-columns: 1fr;
-            }
-
-            .quick-item {
-                border-right: none;
-                border-bottom: 1px solid var(--line);
-            }
-
-            .quick-item:last-child {
-                border-bottom: none;
+                font-size: 60px;
             }
 
             section {
-                padding: 80px 5%;
-            }
-
-            .section-title {
-                font-size: 34px;
-            }
-
-            .about-grid,
-            .projects,
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-box {
-                padding: 30px 20px;
-            }
-
-            .contact-box h2 {
-                font-size: 28px;
+                padding: 80px 6%;
             }
 
             footer {
@@ -713,599 +474,379 @@
     </style>
 </head>
 
-
 <body>
 
-    <div class="grid"></div>
-    <div class="glow"></div>
-    <div class="glow2"></div>
+<div class="background"></div>
+<div class="grid"></div>
+
+<div class="particles">
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+</div>
+
+<div class="cursor" id="cursor"></div>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">KEE<span>FA.</span></div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">Profile</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#project">Project</a></li>
+    </ul>
+</nav>
 
 
-    <!-- NAVBAR -->
+<!-- HERO -->
+<section class="hero" id="home">
 
-    <nav>
-        <div class="logo">
-            KEE<span>PA.</span>
+    <div>
+        <div class="tag">XI TKJ 4 · SMK TARUNA BHAKTI</div>
+
+        <h1>
+            Rifky<br>
+            <span>Keefa.</span>
+        </h1>
+
+        <p>
+            Student of Teknik Komputer dan Jaringan yang lagi
+            belajar membangun sesuatu dari jaringan, server,
+            Linux, sampai web development.
+        </p>
+
+        <div class="buttons">
+            <a href="#project" class="btn primary">Explore Project</a>
+            <a href="#about" class="btn secondary">About Me</a>
+        </div>
+    </div>
+
+
+    <!-- TERMINAL -->
+    <div class="terminal">
+
+        <div class="terminal-head">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
         </div>
 
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">Profil</a></li>
-            <li><a href="#skills">Keahlian</a></li>
-            <li><a href="#projects">Project</a></li>
-            <li><a href="#journey">Perjalanan</a></li>
-        </ul>
-    </nav>
+        <div class="terminal-body">
+            <div><span class="cyan">keefa@tkj</span>:~$ whoami</div>
+            <div class="green">rifky-keefa-ramadhan</div>
 
+            <div><span class="cyan">keefa@tkj</span>:~$ cat profile.txt</div>
 
-    <!-- HERO -->
-
-    <section class="hero" id="home">
-
-        <div class="hero-content">
-
-            <div class="status">
-                <span class="status-dot"></span>
-                Sedang belajar & berkembang
+            <div>
+                Class : XI TKJ 4<br>
+                Major : Teknik Komputer & Jaringan<br>
+                Focus : Networking / Linux / Web
             </div>
 
-            <h1>
-                Rifky Keefa<br>
-                <span id="typing"></span>
-            </h1>
+            <div>
+                <span class="cyan">keefa@tkj</span>:~$
+                <span class="purple">learning --continue</span>
+            </div>
 
-            <p class="hero-subtitle">
-                Siswa <strong>XI TKJ 4</strong> di SMK Taruna Bhakti
-                yang sedang mendalami dunia komputer, jaringan,
-                server, dan teknologi web.
+            <div class="green">
+                ✓ system running...
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROFILE -->
+<section id="about">
+
+    <div class="section-title">
+        <small>01 — PROFILE</small>
+        <h2>About Me</h2>
+    </div>
+
+    <div class="about">
+
+        <div class="card">
+
+            <h3>Rifky Keefa Ramadhan</h3>
+
+            <p>
+                Saya siswa SMK Taruna Bhakti Depok jurusan
+                Teknik Komputer dan Jaringan. Saat ini saya
+                sedang mendalami dunia networking, Linux,
+                server, Docker, dan web development.
             </p>
 
-            <div class="hero-buttons">
+            <div class="info">
 
-                <a href="#projects" class="btn btn-primary">
-                    Lihat Project
-                </a>
-
-                <a href="#about" class="btn btn-outline">
-                    Tentang Saya
-                </a>
-
-            </div>
-
-
-            <div class="quick-info">
-
-                <div class="quick-item">
-                    <small>SEKOLAH</small>
-                    <strong>SMK Taruna Bhakti</strong>
-                </div>
-
-                <div class="quick-item">
-                    <small>KELAS</small>
+                <div>
+                    <small>Class</small>
                     <strong>XI TKJ 4</strong>
                 </div>
 
-                <div class="quick-item">
-                    <small>JURUSAN</small>
-                    <strong>Teknik Komputer & Jaringan</strong>
+                <div>
+                    <small>Major</small>
+                    <strong>TKJ</strong>
+                </div>
+
+                <div>
+                    <small>School</small>
+                    <strong>SMK Taruna Bhakti</strong>
+                </div>
+
+                <div>
+                    <small>Interest</small>
+                    <strong>Technology</strong>
                 </div>
 
             </div>
 
         </div>
 
-    </section>
 
+        <div class="card">
 
-    <!-- ABOUT -->
+            <h3>Current Mission</h3>
 
-    <section id="about">
-
-        <div class="section-container reveal">
-
-            <div class="section-label">
-                01 — PROFIL
-            </div>
-
-            <h2 class="section-title">
-                Mengenal saya lebih dekat.
-            </h2>
-
-            <p class="section-desc">
-                Bukan sekadar belajar teori. Saya lebih suka memahami
-                sesuatu dengan langsung mencoba, melakukan konfigurasi,
-                menemukan error, lalu mencari tahu cara memperbaikinya.
+            <p>
+                Bukan cuma belajar teori, tapi mencoba langsung
+                lewat berbagai project kecil. Dari konfigurasi
+                jaringan sampai deploy website.
             </p>
 
+            <br>
 
-            <div class="about-grid">
-
-                <div class="about-card">
-
-                    <h3>Tentang Saya</h3>
-
-                    <p>
-                        Saya Rifky Keefa Ramadhan, siswa kelas XI TKJ 4
-                        dari SMK Taruna Bhakti. Saat ini saya sedang
-                        memperdalam bidang Teknik Komputer dan Jaringan,
-                        mulai dari dasar networking sampai server dan
-                        deployment website.
-                        <br><br>
-                        Beberapa hal yang sedang saya pelajari antara lain
-                        Linux, Cisco, subnetting, VLAN, DHCP, DNS,
-                        SSH, Docker, GitHub, dan web development.
-                    </p>
-
-                </div>
-
-
-                <div class="about-card">
-
-                    <h3>Data Singkat</h3>
-
-                    <div class="data-list">
-
-                        <div class="data">
-                            <span>Nama</span>
-                            <strong>Rifky Keefa Ramadhan</strong>
-                        </div>
-
-                        <div class="data">
-                            <span>Kelas</span>
-                            <strong>XI TKJ 4</strong>
-                        </div>
-
-                        <div class="data">
-                            <span>Jurusan</span>
-                            <strong>TKJ</strong>
-                        </div>
-
-                        <div class="data">
-                            <span>Sekolah</span>
-                            <strong>SMK Taruna Bhakti</strong>
-                        </div>
-
-                        <div class="data">
-                            <span>Hobi</span>
-                            <strong>Olahraga</strong>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- SKILLS -->
-
-    <section id="skills">
-
-        <div class="section-container reveal">
-
-            <div class="section-label">
-                02 — KEAHLIAN
-            </div>
-
-            <h2 class="section-title">
-                Hal yang sedang saya pelajari.
-            </h2>
-
-            <p class="section-desc">
-                Skill yang saya bangun secara bertahap melalui tugas,
-                praktik, dan project.
+            <p>
+                Targetnya sederhana: terus belajar, bikin project,
+                dan memahami teknologi yang sebelumnya belum
+                dipahami.
             </p>
 
-
-            <div class="skills-grid">
-
-                <div class="skill">
-                    <div class="skill-number">01</div>
-                    <h3>Networking</h3>
-                    <p>
-                        Subnetting, IP addressing, VLAN, trunk,
-                        routing, DHCP, DNS, dan troubleshooting jaringan.
-                    </p>
-                </div>
-
-                <div class="skill">
-                    <div class="skill-number">02</div>
-                    <h3>Linux</h3>
-                    <p>
-                        Command line, permission, user management,
-                        SSH, service, Apache, dan konfigurasi server.
-                    </p>
-                </div>
-
-                <div class="skill">
-                    <div class="skill-number">03</div>
-                    <h3>Docker</h3>
-                    <p>
-                        Container, image, Dockerfile, volume,
-                        port mapping, dan Docker Compose.
-                    </p>
-                </div>
-
-                <div class="skill">
-                    <div class="skill-number">04</div>
-                    <h3>Web Development</h3>
-                    <p>
-                        HTML, CSS, JavaScript, responsive design,
-                        dan deployment website.
-                    </p>
-                </div>
-
-                <div class="skill">
-                    <div class="skill-number">05</div>
-                    <h3>Server</h3>
-                    <p>
-                        Apache, DHCP, DNS, SSH, konfigurasi jaringan
-                        dan dasar administrasi server.
-                    </p>
-                </div>
-
-                <div class="skill">
-                    <div class="skill-number">06</div>
-                    <h3>Git & GitHub</h3>
-                    <p>
-                        Repository, version control, GitHub Pages,
-                        dan deployment project.
-                    </p>
-                </div>
-
-            </div>
-
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- PROJECTS -->
+<!-- SKILLS -->
+<section id="skills">
 
-    <section id="projects">
+    <div class="section-title">
+        <small>02 — SKILLS</small>
+        <h2>What I'm Learning</h2>
+    </div>
 
-        <div class="section-container reveal">
+    <div class="skills">
 
-            <div class="section-label">
-                03 — PROJECT
+        <div class="skill">
+            <div class="skill-top">
+                <strong>Networking</strong>
+                <span>85%</span>
             </div>
+            <div class="bar"><span class="w85"></span></div>
+        </div>
 
-            <h2 class="section-title">
-                Beberapa project yang pernah dikerjakan.
-            </h2>
+        <div class="skill">
+            <div class="skill-top">
+                <strong>Linux</strong>
+                <span>75%</span>
+            </div>
+            <div class="bar"><span class="w75"></span></div>
+        </div>
 
-            <p class="section-desc">
-                Project dan praktik yang menjadi bagian dari proses
-                belajar saya di bidang TKJ.
+        <div class="skill">
+            <div class="skill-top">
+                <strong>Docker</strong>
+                <span>70%</span>
+            </div>
+            <div class="bar"><span class="w70"></span></div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-top">
+                <strong>Web Development</strong>
+                <span>65%</span>
+            </div>
+            <div class="bar"><span class="w65"></span></div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECT -->
+<section id="project">
+
+    <div class="section-title">
+        <small>03 — PROJECT</small>
+        <h2>Things I've Built</h2>
+    </div>
+
+    <div class="projects">
+
+        <div class="project">
+
+            <div class="project-number">PROJECT / 001</div>
+
+            <h3>Network Lab</h3>
+
+            <p>
+                Eksperimen jaringan menggunakan Cisco Packet
+                Tracer dengan VLAN, DHCP, routing dan konfigurasi
+                perangkat jaringan.
             </p>
 
-
-            <div class="projects">
-
-                <div class="project">
-
-                    <div class="project-top">
-                        <span class="project-number">PROJECT 01</span>
-                        <span class="project-arrow">↗</span>
-                    </div>
-
-                    <h3>Network Configuration</h3>
-
-                    <p>
-                        Praktik konfigurasi jaringan menggunakan
-                        Cisco Packet Tracer, VLAN, DHCP, routing,
-                        subnetting, SSH, dan Telnet.
-                    </p>
-
-                    <div class="tags">
-                        <span class="tag">Cisco</span>
-                        <span class="tag">VLAN</span>
-                        <span class="tag">Routing</span>
-                    </div>
-
-                </div>
-
-
-                <div class="project">
-
-                    <div class="project-top">
-                        <span class="project-number">PROJECT 02</span>
-                        <span class="project-arrow">↗</span>
-                    </div>
-
-                    <h3>Linux Server</h3>
-
-                    <p>
-                        Praktik server Linux dengan konfigurasi
-                        SSH, Apache, user management, permission,
-                        DHCP, dan jaringan.
-                    </p>
-
-                    <div class="tags">
-                        <span class="tag">Linux</span>
-                        <span class="tag">Apache</span>
-                        <span class="tag">SSH</span>
-                    </div>
-
-                </div>
-
-
-                <div class="project">
-
-                    <div class="project-top">
-                        <span class="project-number">PROJECT 03</span>
-                        <span class="project-arrow">↗</span>
-                    </div>
-
-                    <h3>Docker Web</h3>
-
-                    <p>
-                        Membuat dan menjalankan website menggunakan
-                        container Docker dengan port mapping,
-                        volume, dan Docker Compose.
-                    </p>
-
-                    <div class="tags">
-                        <span class="tag">Docker</span>
-                        <span class="tag">Nginx</span>
-                        <span class="tag">Compose</span>
-                    </div>
-
-                </div>
-
-
-                <div class="project">
-
-                    <div class="project-top">
-                        <span class="project-number">PROJECT 04</span>
-                        <span class="project-arrow">↗</span>
-                    </div>
-
-                    <h3>Personal Website</h3>
-
-                    <p>
-                        Website pribadi yang dibuat menggunakan
-                        HTML dan CSS kemudian dipublikasikan
-                        menggunakan GitHub Pages.
-                    </p>
-
-                    <div class="tags">
-                        <span class="tag">HTML</span>
-                        <span class="tag">CSS</span>
-                        <span class="tag">GitHub Pages</span>
-                    </div>
-
-                </div>
-
+            <div class="tech">
+                <span>Cisco</span>
+                <span>VLAN</span>
+                <span>DHCP</span>
             </div>
 
         </div>
 
-    </section>
 
+        <div class="project">
 
-    <!-- JOURNEY -->
+            <div class="project-number">PROJECT / 002</div>
 
-    <section id="journey">
+            <h3>Docker Web</h3>
 
-        <div class="section-container reveal">
-
-            <div class="section-label">
-                04 — PERJALANAN
-            </div>
-
-            <h2 class="section-title">
-                Belajar sedikit demi sedikit.
-            </h2>
-
-            <p class="section-desc">
-                Perjalanan belajar tidak selalu langsung berhasil.
-                Justru dari error dan troubleshooting banyak hal baru
-                yang bisa dipahami.
+            <p>
+                Menjalankan website menggunakan container Docker
+                dan mengatur service serta port agar dapat
+                diakses melalui browser.
             </p>
 
-
-            <div class="timeline">
-
-                <div class="timeline-item">
-
-                    <small>TKJ</small>
-
-                    <h3>Mulai memahami jaringan komputer</h3>
-
-                    <p>
-                        Belajar mengenai IP address, subnetting,
-                        perangkat jaringan, topologi, dan konsep
-                        dasar komunikasi jaringan.
-                    </p>
-
-                </div>
-
-
-                <div class="timeline-item">
-
-                    <small>NETWORKING</small>
-
-                    <h3>Masuk ke konfigurasi jaringan</h3>
-
-                    <p>
-                        Mulai praktik VLAN, DHCP, routing,
-                        trunk, SSH, dan troubleshooting menggunakan
-                        Cisco Packet Tracer.
-                    </p>
-
-                </div>
-
-
-                <div class="timeline-item">
-
-                    <small>SERVER</small>
-
-                    <h3>Belajar Linux dan server</h3>
-
-                    <p>
-                        Mulai mengenal Linux, command line,
-                        permission, SSH, Apache, DHCP,
-                        dan konfigurasi service.
-                    </p>
-
-                </div>
-
-
-                <div class="timeline-item">
-
-                    <small>WEB & CLOUD</small>
-
-                    <h3>Membangun dan deploy website</h3>
-
-                    <p>
-                        Mempelajari HTML, CSS, Docker, GitHub,
-                        GitHub Pages, dan proses menghubungkan
-                        website dengan domain sendiri.
-                    </p>
-
-                </div>
-
+            <div class="tech">
+                <span>Docker</span>
+                <span>Nginx</span>
+                <span>HTML</span>
             </div>
 
         </div>
 
-    </section>
 
+        <div class="project">
 
-    <!-- CONTACT -->
+            <div class="project-number">PROJECT / 003</div>
 
-    <section>
+            <h3>Personal Website</h3>
 
-        <div class="section-container reveal">
+            <p>
+                Website portfolio pribadi yang dibuat untuk
+                menampilkan profile, skill, project dan
+                perjalanan belajar di bidang TKJ.
+            </p>
 
-            <div class="contact-box">
-
-                <h2>Masih dalam proses.</h2>
-
-                <p>
-                    Website ini akan terus dikembangkan seiring
-                    bertambahnya pengalaman, skill, dan project baru.
-                    Untuk sekarang, saya masih terus belajar dan
-                    mencoba hal-hal baru di dunia teknologi.
-                </p>
-
-                <br>
-
-                <a href="#home" class="btn btn-primary">
-                    Kembali ke atas
-                </a>
-
+            <div class="tech">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- FOOTER -->
+<!-- STATUS -->
+<section>
 
-    <footer>
+    <div class="section-title">
+        <small>04 — SYSTEM</small>
+        <h2>Current Status</h2>
+    </div>
 
-        <span>
-            © 2026 Rifky Keefa Ramadhan
-        </span>
+    <div class="status">
 
-        <span>
-            XI TKJ 4 · Teknik Komputer & Jaringan
-        </span>
+        <div class="status-box">
+            <strong class="online">●</strong>
+            <div>Learning</div>
+            <span class="muted">Currently improving technical skills</span>
+        </div>
 
-    </footer>
+        <div class="status-box">
+            <strong>TKJ</strong>
+            <div>Focus Area</div>
+            <span class="muted">Networking & Computer Technology</span>
+        </div>
+
+        <div class="status-box">
+            <strong>∞</strong>
+            <div>Next Project</div>
+            <span class="muted">Something is currently being built</span>
+        </div>
+
+    </div>
+
+</section>
 
 
-    <script>
+<footer>
+    <div>© 2026 Rifky Keefa Ramadhan</div>
+    <div>XI TKJ 4 · Teknik Komputer dan Jaringan</div>
+</footer>
 
-        /* =========================
-           TYPING EFFECT
-        ========================= */
 
-        const words = [
-            "Teknik Komputer & Jaringan.",
-            "Networking Enthusiast.",
-            "Future Engineer."
-        ];
+<script>
 
-        const typing = document.getElementById("typing");
+    /* CURSOR GLOW */
+    const cursor = document.getElementById("cursor");
 
-        let wordIndex = 0;
-        let charIndex = 0;
-        let deleting = false;
+    document.addEventListener("mousemove", e => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+    });
 
-        function typeEffect() {
 
-            const current = words[wordIndex];
+    /* RANDOM PARTICLE MOVEMENT */
+    const particles = document.querySelectorAll(".particles span");
 
-            if (!deleting) {
+    particles.forEach(p => {
+        p.style.animationDuration =
+            (5 + Math.random() * 6) + "s";
+    });
 
-                typing.textContent = current.substring(0, charIndex + 1);
-                charIndex++;
 
-                if (charIndex === current.length) {
+    /* REVEAL ANIMATION */
+    const elements = document.querySelectorAll(
+        ".card, .project, .skill, .status-box"
+    );
 
-                    deleting = true;
+    const observer = new IntersectionObserver(entries => {
 
-                    setTimeout(typeEffect, 1800);
-                    return;
-                }
+        entries.forEach(entry => {
 
-            } else {
+            if (entry.isIntersecting) {
 
-                typing.textContent = current.substring(0, charIndex - 1);
-                charIndex--;
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
 
-                if (charIndex === 0) {
-
-                    deleting = false;
-
-                    wordIndex++;
-
-                    if (wordIndex >= words.length) {
-                        wordIndex = 0;
-                    }
-                }
             }
 
-            setTimeout(typeEffect, deleting ? 35 : 75);
-        }
+        });
 
-        typeEffect();
+    }, { threshold: .15 });
 
 
-        /* =========================
-           SCROLL REVEAL
-        ========================= */
+    elements.forEach(el => {
 
-        const reveals = document.querySelectorAll(".reveal");
+        el.style.opacity = "0";
+        el.style.transform = "translateY(25px)";
+        el.style.transition = "all .7s ease";
 
-        function revealOnScroll() {
+        observer.observe(el);
 
-            reveals.forEach(element => {
+    });
 
-                const windowHeight = window.innerHeight;
-                const elementTop = element.getBoundingClientRect().top;
-
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add("active");
-                }
-
-            });
-
-        }
-
-        window.addEventListener("scroll", revealOnScroll);
-
-        revealOnScroll();
-
-    </script>
+</script>
 
 </body>
 </html>
