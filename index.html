@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rifky Keefa Ramadhan | TKJ Portfolio</title>
+
+    <title>Rifky Keefa Ramadhan — TKJ</title>
 
     <style>
         * {
@@ -13,617 +14,1190 @@
             scroll-behavior: smooth;
         }
 
+        :root {
+            --bg: #070b12;
+            --card: #0d131d;
+            --line: #1c2633;
+            --text: #edf2f7;
+            --muted: #8b98a8;
+            --blue: #3b82f6;
+            --cyan: #22d3ee;
+        }
+
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #050816;
-            color: #fff;
+            font-family: Inter, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
             overflow-x: hidden;
         }
 
-        /* BACKGROUND */
-        body::before {
-            content: "";
+        /* =========================
+           BACKGROUND
+        ========================= */
+
+        .grid {
             position: fixed;
-            width: 500px;
-            height: 500px;
-            background: #0066ff;
-            filter: blur(180px);
-            opacity: 0.25;
-            top: -200px;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+            background-size: 45px 45px;
+            mask-image: linear-gradient(to bottom, black, transparent);
+            pointer-events: none;
+            z-index: -3;
+        }
+
+        .glow {
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            background: #2563eb;
+            filter: blur(160px);
+            opacity: .12;
+            top: 10%;
             left: -150px;
             z-index: -2;
+            animation: moveGlow 8s ease-in-out infinite alternate;
         }
 
-        body::after {
-            content: "";
+        .glow2 {
             position: fixed;
-            width: 500px;
-            height: 500px;
-            background: #8a2be2;
-            filter: blur(180px);
-            opacity: 0.2;
-            bottom: -200px;
-            right: -150px;
+            width: 300px;
+            height: 300px;
+            background: #06b6d4;
+            filter: blur(150px);
+            opacity: .08;
+            right: -120px;
+            bottom: 10%;
             z-index: -2;
+            animation: moveGlow2 10s ease-in-out infinite alternate;
         }
 
-        /* NAVBAR */
+        @keyframes moveGlow {
+            from { transform: translateY(0); }
+            to { transform: translateY(180px); }
+        }
+
+        @keyframes moveGlow2 {
+            from { transform: translateY(0); }
+            to { transform: translateY(-150px); }
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
         nav {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
-            padding: 18px 8%;
+            height: 72px;
+            padding: 0 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(5, 8, 22, 0.75);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+
+            background: rgba(7,11,18,.72);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255,255,255,.06);
+
             z-index: 1000;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #00d9ff;
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: -1px;
         }
 
         .logo span {
-            color: #fff;
+            color: var(--cyan);
         }
 
         nav ul {
-            display: flex;
-            gap: 28px;
             list-style: none;
+            display: flex;
+            gap: 30px;
         }
 
         nav a {
-            color: #ddd;
+            color: #9da8b6;
             text-decoration: none;
-            transition: 0.3s;
+            font-size: 14px;
+            transition: .3s;
         }
 
         nav a:hover {
-            color: #00d9ff;
+            color: white;
         }
 
-        /* HERO */
+        /* =========================
+           HERO
+        ========================= */
+
         .hero {
             min-height: 100vh;
+            padding: 150px 8% 80px;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: 100px 20px 60px;
+
+            position: relative;
         }
 
         .hero-content {
-            max-width: 900px;
+            width: 100%;
+            max-width: 1050px;
         }
 
-        .badge {
-            display: inline-block;
-            padding: 9px 18px;
-            border: 1px solid #00d9ff;
-            border-radius: 30px;
-            color: #00d9ff;
-            margin-bottom: 25px;
-            background: rgba(0,217,255,0.08);
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            border: 1px solid var(--line);
+            background: rgba(255,255,255,.025);
+
+            padding: 8px 14px;
+            border-radius: 50px;
+
+            color: #9da8b6;
+            font-size: 13px;
+
+            animation: fadeDown .8s ease forwards;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #22c55e;
         }
 
         .hero h1 {
-            font-size: clamp(45px, 8vw, 90px);
-            line-height: 1;
-            margin-bottom: 20px;
+            margin-top: 28px;
+
+            font-size: clamp(48px, 8vw, 92px);
+            line-height: .98;
+            letter-spacing: -5px;
+
+            max-width: 900px;
+
+            animation: fadeUp .9s ease forwards;
         }
 
         .hero h1 span {
-            background: linear-gradient(90deg, #00d9ff, #8a2be2, #ff3cac);
-            -webkit-background-clip: text;
-            color: transparent;
+            color: var(--cyan);
         }
 
-        .hero p {
-            color: #b9c0d0;
+        .hero-subtitle {
+            margin-top: 28px;
+            max-width: 650px;
+
+            color: var(--muted);
             font-size: 18px;
-            line-height: 1.7;
-            max-width: 700px;
-            margin: auto;
+            line-height: 1.8;
+
+            animation: fadeUp 1.1s ease forwards;
         }
 
-        .buttons {
+        .typing {
+            color: white;
+            border-right: 2px solid var(--cyan);
+            padding-right: 5px;
+        }
+
+        .hero-buttons {
             margin-top: 35px;
+
             display: flex;
-            justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
+
+            animation: fadeUp 1.3s ease forwards;
         }
 
         .btn {
-            padding: 13px 25px;
-            border-radius: 30px;
             text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
+            padding: 13px 21px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: .3s;
         }
 
-        .primary {
-            background: linear-gradient(90deg, #00d9ff, #0066ff);
+        .btn-primary {
+            background: white;
+            color: #05080d;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255,255,255,.12);
+        }
+
+        .btn-outline {
             color: white;
+            border: 1px solid var(--line);
+            background: rgba(255,255,255,.025);
         }
 
-        .secondary {
-            border: 1px solid #555;
-            color: white;
+        .btn-outline:hover {
+            border-color: #405064;
+            transform: translateY(-3px);
         }
 
-        .btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0,217,255,0.25);
+        /* =========================
+           HERO INFO
+        ========================= */
+
+        .quick-info {
+            margin-top: 70px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            max-width: 750px;
+
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+
+            animation: fadeUp 1.5s ease forwards;
         }
 
-        /* SECTION */
+        .quick-item {
+            padding: 22px 25px;
+            border-right: 1px solid var(--line);
+        }
+
+        .quick-item:last-child {
+            border-right: none;
+        }
+
+        .quick-item small {
+            display: block;
+            color: #657384;
+            margin-bottom: 7px;
+            font-size: 12px;
+        }
+
+        .quick-item strong {
+            font-size: 15px;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
         section {
-            padding: 100px 8%;
+            padding: 110px 8%;
+        }
+
+        .section-container {
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        .section-label {
+            color: var(--cyan);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
         }
 
         .section-title {
-            text-align: center;
-            margin-bottom: 50px;
+            font-size: 42px;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
         }
 
-        .section-title h2 {
-            font-size: 40px;
-            margin-bottom: 10px;
+        .section-desc {
+            color: var(--muted);
+            max-width: 650px;
+            line-height: 1.8;
         }
 
-        .section-title p {
-            color: #8992a8;
-        }
+        /* =========================
+           ABOUT
+        ========================= */
 
-        /* PROFILE */
-        .profile {
-            max-width: 1000px;
-            margin: auto;
+        .about-grid {
+            margin-top: 50px;
+
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
-
-        .card {
-            padding: 30px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 22px;
-            backdrop-filter: blur(15px);
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: #00d9ff;
-        }
-
-        .card h3 {
-            color: #00d9ff;
-            margin-bottom: 20px;
-        }
-
-        .info {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-
-        .info span:first-child {
-            color: #888fa3;
-        }
-
-        /* SKILLS */
-        .skills {
-            max-width: 1000px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1.3fr .7fr;
             gap: 20px;
         }
 
+        .about-card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 30px;
+
+            transition: .35s;
+        }
+
+        .about-card:hover {
+            border-color: #304154;
+            transform: translateY(-5px);
+        }
+
+        .about-card h3 {
+            font-size: 19px;
+            margin-bottom: 18px;
+        }
+
+        .about-card p {
+            color: var(--muted);
+            line-height: 1.9;
+            font-size: 15px;
+        }
+
+        .data-list {
+            margin-top: 20px;
+        }
+
+        .data {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+
+            padding: 14px 0;
+            border-bottom: 1px solid var(--line);
+
+            font-size: 14px;
+        }
+
+        .data span:first-child {
+            color: #657384;
+        }
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skills-grid {
+            margin-top: 50px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
         .skill {
-            text-align: center;
-            padding: 30px 20px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: 0.3s;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 25px;
+
+            transition: .35s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: var(--blue);
+            filter: blur(70px);
+            opacity: 0;
+            right: -50px;
+            bottom: -50px;
+            transition: .4s;
         }
 
         .skill:hover {
-            transform: scale(1.05);
-            background: rgba(0,217,255,0.08);
+            transform: translateY(-6px);
+            border-color: #33475c;
         }
 
-        .icon {
-            font-size: 42px;
-            margin-bottom: 15px;
+        .skill:hover::after {
+            opacity: .2;
+        }
+
+        .skill-number {
+            color: #526274;
+            font-size: 12px;
+            margin-bottom: 25px;
         }
 
         .skill h3 {
+            font-size: 17px;
             margin-bottom: 10px;
         }
 
         .skill p {
-            color: #9ca4b8;
+            color: var(--muted);
+            line-height: 1.7;
             font-size: 14px;
-            line-height: 1.6;
         }
 
-        /* PROJECT */
+        /* =========================
+           PROJECTS
+        ========================= */
+
         .projects {
-            max-width: 1000px;
-            margin: auto;
+            margin-top: 50px;
+
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
         }
 
         .project {
-            padding: 28px;
-            min-height: 220px;
-            border-radius: 20px;
-            background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: 0.3s;
+            padding: 30px;
+
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+
+            transition: .35s;
         }
 
         .project:hover {
-            transform: translateY(-8px);
-            border-color: #8a2be2;
+            transform: translateY(-6px);
+            border-color: #36506a;
+        }
+
+        .project-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .project-number {
+            color: #526274;
+            font-size: 12px;
+        }
+
+        .project-arrow {
+            color: var(--cyan);
+            font-size: 20px;
+            transition: .3s;
+        }
+
+        .project:hover .project-arrow {
+            transform: translate(4px,-4px);
         }
 
         .project h3 {
-            margin: 15px 0;
+            font-size: 20px;
+            margin-bottom: 10px;
         }
 
         .project p {
-            color: #9ca4b8;
-            line-height: 1.6;
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 14px;
         }
 
-        /* CONTACT */
-        .contact {
-            text-align: center;
-            max-width: 800px;
-            margin: auto;
+        .tags {
+            margin-top: 20px;
+            display: flex;
+            gap: 7px;
+            flex-wrap: wrap;
         }
+
+        .tag {
+            border: 1px solid var(--line);
+            padding: 5px 9px;
+            border-radius: 5px;
+            color: #7f8b9b;
+            font-size: 11px;
+        }
+
+        /* =========================
+           JOURNEY
+        ========================= */
+
+        .timeline {
+            margin-top: 50px;
+            border-left: 1px solid #263241;
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--cyan);
+            border-radius: 50%;
+            left: -35px;
+            top: 5px;
+            box-shadow: 0 0 15px rgba(34,211,238,.6);
+        }
+
+        .timeline-item small {
+            color: var(--cyan);
+        }
+
+        .timeline-item h3 {
+            margin: 8px 0;
+        }
+
+        .timeline-item p {
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 650px;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
 
         .contact-box {
-            margin-top: 30px;
-            padding: 40px;
-            border-radius: 25px;
-            background: linear-gradient(135deg, rgba(0,217,255,0.1), rgba(138,43,226,0.1));
-            border: 1px solid rgba(255,255,255,0.1);
+            margin-top: 45px;
+
+            border: 1px solid var(--line);
+            background: linear-gradient(
+                120deg,
+                rgba(34,211,238,.06),
+                rgba(59,130,246,.03)
+            );
+
+            border-radius: 16px;
+            padding: 45px;
+            text-align: center;
         }
 
         .contact-box h2 {
-            font-size: 35px;
+            font-size: 36px;
             margin-bottom: 15px;
         }
 
         .contact-box p {
-            color: #aab1c2;
-            line-height: 1.7;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: auto;
         }
 
-        /* FOOTER */
+        /* =========================
+           FOOTER
+        ========================= */
+
         footer {
-            text-align: center;
-            padding: 30px;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            color: #777f92;
+            border-top: 1px solid var(--line);
+            padding: 30px 8%;
+            display: flex;
+            justify-content: space-between;
+            color: #5e6b7b;
+            font-size: 12px;
         }
 
         footer span {
-            color: #00d9ff;
+            color: #aab5c3;
         }
 
-        /* RESPONSIVE */
-        @media(max-width: 800px) {
+        /* =========================
+           ANIMATION
+        ========================= */
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
             nav ul {
                 display: none;
             }
 
-            .profile,
-            .skills,
-            .projects {
+            .hero {
+                padding: 130px 5% 70px;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+                letter-spacing: -3px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .quick-info {
                 grid-template-columns: 1fr;
+            }
+
+            .quick-item {
+                border-right: none;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .quick-item:last-child {
+                border-bottom: none;
             }
 
             section {
                 padding: 80px 5%;
             }
+
+            .section-title {
+                font-size: 34px;
+            }
+
+            .about-grid,
+            .projects,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-box {
+                padding: 30px 20px;
+            }
+
+            .contact-box h2 {
+                font-size: 28px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
 
+
 <body>
 
+    <div class="grid"></div>
+    <div class="glow"></div>
+    <div class="glow2"></div>
+
+
     <!-- NAVBAR -->
+
     <nav>
-        <div class="logo">KEE<span>PA.</span></div>
+        <div class="logo">
+            KEE<span>PA.</span>
+        </div>
 
         <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#profile">Profil</a></li>
-            <li><a href="#skills">Skill</a></li>
+            <li><a href="#about">Profil</a></li>
+            <li><a href="#skills">Keahlian</a></li>
             <li><a href="#projects">Project</a></li>
-            <li><a href="#contact">Kontak</a></li>
+            <li><a href="#journey">Perjalanan</a></li>
         </ul>
     </nav>
 
 
     <!-- HERO -->
+
     <section class="hero" id="home">
+
         <div class="hero-content">
 
-            <div class="badge">
-                ⚡ XI TKJ 4 • SMK Taruna Bhakti
+            <div class="status">
+                <span class="status-dot"></span>
+                Sedang belajar & berkembang
             </div>
 
             <h1>
-                Hi, I'm <span>Rifky Keefa</span>
+                Rifky Keefa<br>
+                <span id="typing"></span>
             </h1>
 
-            <p>
-                Selamat datang di website pribadi saya.
-                Saya adalah siswa <b>SMK Taruna Bhakti Depok</b>
-                dari jurusan <b>Teknik Komputer dan Jaringan (TKJ)</b>.
-                Di sini saya berbagi tentang profil, skill, project,
-                dan perjalanan saya di dunia teknologi.
+            <p class="hero-subtitle">
+                Siswa <strong>XI TKJ 4</strong> di SMK Taruna Bhakti
+                yang sedang mendalami dunia komputer, jaringan,
+                server, dan teknologi web.
             </p>
 
-            <div class="buttons">
-                <a href="#profile" class="btn primary">
-                    🚀 Lihat Profil
+            <div class="hero-buttons">
+
+                <a href="#projects" class="btn btn-primary">
+                    Lihat Project
                 </a>
 
-                <a href="#projects" class="btn secondary">
-                    💻 Lihat Project
+                <a href="#about" class="btn btn-outline">
+                    Tentang Saya
                 </a>
+
+            </div>
+
+
+            <div class="quick-info">
+
+                <div class="quick-item">
+                    <small>SEKOLAH</small>
+                    <strong>SMK Taruna Bhakti</strong>
+                </div>
+
+                <div class="quick-item">
+                    <small>KELAS</small>
+                    <strong>XI TKJ 4</strong>
+                </div>
+
+                <div class="quick-item">
+                    <small>JURUSAN</small>
+                    <strong>Teknik Komputer & Jaringan</strong>
+                </div>
+
             </div>
 
         </div>
+
     </section>
 
 
-    <!-- PROFILE -->
-    <section id="profile">
+    <!-- ABOUT -->
 
-        <div class="section-title">
-            <h2>👤 Tentang Saya</h2>
-            <p>Kenalan lebih dekat dengan saya</p>
-        </div>
+    <section id="about">
 
-        <div class="profile">
+        <div class="section-container reveal">
 
-            <div class="card">
-                <h3>🔥 Profil</h3>
-
-                <div class="info">
-                    <span>Nama</span>
-                    <b>Rifky Keefa Ramadhan</b>
-                </div>
-
-                <div class="info">
-                    <span>Kelas</span>
-                    <b>XI TKJ 4</b>
-                </div>
-
-                <div class="info">
-                    <span>Sekolah</span>
-                    <b>SMK Taruna Bhakti</b>
-                </div>
-
-                <div class="info">
-                    <span>Jurusan</span>
-                    <b>Teknik Komputer & Jaringan</b>
-                </div>
-
-                <div class="info">
-                    <span>Hobi</span>
-                    <b>Olahraga 🏃</b>
-                </div>
+            <div class="section-label">
+                01 — PROFIL
             </div>
 
+            <h2 class="section-title">
+                Mengenal saya lebih dekat.
+            </h2>
 
-            <div class="card">
-                <h3>🚀 Tentang Perjalanan Saya</h3>
+            <p class="section-desc">
+                Bukan sekadar belajar teori. Saya lebih suka memahami
+                sesuatu dengan langsung mencoba, melakukan konfigurasi,
+                menemukan error, lalu mencari tahu cara memperbaikinya.
+            </p>
 
-                <p style="color:#aab1c2; line-height:1.8;">
-                    Saya sedang belajar dan mendalami dunia teknologi,
-                    terutama di bidang komputer dan jaringan.
-                    Mulai dari networking, Linux, server, Docker,
-                    GitHub, hingga pembuatan website.
-                    <br><br>
-                    Saya percaya bahwa kemampuan tidak langsung jago
-                    dalam satu malam. Yang penting terus belajar,
-                    mencoba, gagal, memperbaiki, dan mencoba lagi.
-                    <br><br>
-                    <b style="color:#00d9ff;">
-                        "Belajar sekarang, jago kemudian."
-                    </b>
-                </p>
+
+            <div class="about-grid">
+
+                <div class="about-card">
+
+                    <h3>Tentang Saya</h3>
+
+                    <p>
+                        Saya Rifky Keefa Ramadhan, siswa kelas XI TKJ 4
+                        dari SMK Taruna Bhakti. Saat ini saya sedang
+                        memperdalam bidang Teknik Komputer dan Jaringan,
+                        mulai dari dasar networking sampai server dan
+                        deployment website.
+                        <br><br>
+                        Beberapa hal yang sedang saya pelajari antara lain
+                        Linux, Cisco, subnetting, VLAN, DHCP, DNS,
+                        SSH, Docker, GitHub, dan web development.
+                    </p>
+
+                </div>
+
+
+                <div class="about-card">
+
+                    <h3>Data Singkat</h3>
+
+                    <div class="data-list">
+
+                        <div class="data">
+                            <span>Nama</span>
+                            <strong>Rifky Keefa Ramadhan</strong>
+                        </div>
+
+                        <div class="data">
+                            <span>Kelas</span>
+                            <strong>XI TKJ 4</strong>
+                        </div>
+
+                        <div class="data">
+                            <span>Jurusan</span>
+                            <strong>TKJ</strong>
+                        </div>
+
+                        <div class="data">
+                            <span>Sekolah</span>
+                            <strong>SMK Taruna Bhakti</strong>
+                        </div>
+
+                        <div class="data">
+                            <span>Hobi</span>
+                            <strong>Olahraga</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
+
     </section>
 
 
     <!-- SKILLS -->
+
     <section id="skills">
 
-        <div class="section-title">
-            <h2>⚙️ My Skills</h2>
-            <p>Beberapa hal yang sedang saya pelajari</p>
+        <div class="section-container reveal">
+
+            <div class="section-label">
+                02 — KEAHLIAN
+            </div>
+
+            <h2 class="section-title">
+                Hal yang sedang saya pelajari.
+            </h2>
+
+            <p class="section-desc">
+                Skill yang saya bangun secara bertahap melalui tugas,
+                praktik, dan project.
+            </p>
+
+
+            <div class="skills-grid">
+
+                <div class="skill">
+                    <div class="skill-number">01</div>
+                    <h3>Networking</h3>
+                    <p>
+                        Subnetting, IP addressing, VLAN, trunk,
+                        routing, DHCP, DNS, dan troubleshooting jaringan.
+                    </p>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-number">02</div>
+                    <h3>Linux</h3>
+                    <p>
+                        Command line, permission, user management,
+                        SSH, service, Apache, dan konfigurasi server.
+                    </p>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-number">03</div>
+                    <h3>Docker</h3>
+                    <p>
+                        Container, image, Dockerfile, volume,
+                        port mapping, dan Docker Compose.
+                    </p>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-number">04</div>
+                    <h3>Web Development</h3>
+                    <p>
+                        HTML, CSS, JavaScript, responsive design,
+                        dan deployment website.
+                    </p>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-number">05</div>
+                    <h3>Server</h3>
+                    <p>
+                        Apache, DHCP, DNS, SSH, konfigurasi jaringan
+                        dan dasar administrasi server.
+                    </p>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-number">06</div>
+                    <h3>Git & GitHub</h3>
+                    <p>
+                        Repository, version control, GitHub Pages,
+                        dan deployment project.
+                    </p>
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="skills">
-
-            <div class="skill">
-                <div class="icon">🌐</div>
-                <h3>Networking</h3>
-                <p>
-                    IP Address, Subnetting, VLAN, DHCP,
-                    DNS, Routing, SSH, dan jaringan komputer.
-                </p>
-            </div>
-
-            <div class="skill">
-                <div class="icon">🐧</div>
-                <h3>Linux</h3>
-                <p>
-                    Belajar command Linux, permission,
-                    user management, SSH, Apache, dan server.
-                </p>
-            </div>
-
-            <div class="skill">
-                <div class="icon">🐳</div>
-                <h3>Docker</h3>
-                <p>
-                    Container, Dockerfile, Docker Compose,
-                    volume, networking, dan deployment.
-                </p>
-            </div>
-
-            <div class="skill">
-                <div class="icon">💻</div>
-                <h3>Web Development</h3>
-                <p>
-                    HTML, CSS, JavaScript, responsive website,
-                    dan membuat tampilan website modern.
-                </p>
-            </div>
-
-            <div class="skill">
-                <div class="icon">🔧</div>
-                <h3>Server</h3>
-                <p>
-                    Apache, DNS, DHCP, konfigurasi server,
-                    dan dasar administrasi sistem.
-                </p>
-            </div>
-
-            <div class="skill">
-                <div class="icon">🐙</div>
-                <h3>GitHub</h3>
-                <p>
-                    Repository, Git, GitHub Pages,
-                    deployment website, dan version control.
-                </p>
-            </div>
-
-        </div>
     </section>
 
 
-    <!-- PROJECT -->
+    <!-- PROJECTS -->
+
     <section id="projects">
 
-        <div class="section-title">
-            <h2>💻 My Projects</h2>
-            <p>Beberapa project yang pernah saya kerjakan</p>
+        <div class="section-container reveal">
+
+            <div class="section-label">
+                03 — PROJECT
+            </div>
+
+            <h2 class="section-title">
+                Beberapa project yang pernah dikerjakan.
+            </h2>
+
+            <p class="section-desc">
+                Project dan praktik yang menjadi bagian dari proses
+                belajar saya di bidang TKJ.
+            </p>
+
+
+            <div class="projects">
+
+                <div class="project">
+
+                    <div class="project-top">
+                        <span class="project-number">PROJECT 01</span>
+                        <span class="project-arrow">↗</span>
+                    </div>
+
+                    <h3>Network Configuration</h3>
+
+                    <p>
+                        Praktik konfigurasi jaringan menggunakan
+                        Cisco Packet Tracer, VLAN, DHCP, routing,
+                        subnetting, SSH, dan Telnet.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">Cisco</span>
+                        <span class="tag">VLAN</span>
+                        <span class="tag">Routing</span>
+                    </div>
+
+                </div>
+
+
+                <div class="project">
+
+                    <div class="project-top">
+                        <span class="project-number">PROJECT 02</span>
+                        <span class="project-arrow">↗</span>
+                    </div>
+
+                    <h3>Linux Server</h3>
+
+                    <p>
+                        Praktik server Linux dengan konfigurasi
+                        SSH, Apache, user management, permission,
+                        DHCP, dan jaringan.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">Linux</span>
+                        <span class="tag">Apache</span>
+                        <span class="tag">SSH</span>
+                    </div>
+
+                </div>
+
+
+                <div class="project">
+
+                    <div class="project-top">
+                        <span class="project-number">PROJECT 03</span>
+                        <span class="project-arrow">↗</span>
+                    </div>
+
+                    <h3>Docker Web</h3>
+
+                    <p>
+                        Membuat dan menjalankan website menggunakan
+                        container Docker dengan port mapping,
+                        volume, dan Docker Compose.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">Docker</span>
+                        <span class="tag">Nginx</span>
+                        <span class="tag">Compose</span>
+                    </div>
+
+                </div>
+
+
+                <div class="project">
+
+                    <div class="project-top">
+                        <span class="project-number">PROJECT 04</span>
+                        <span class="project-arrow">↗</span>
+                    </div>
+
+                    <h3>Personal Website</h3>
+
+                    <p>
+                        Website pribadi yang dibuat menggunakan
+                        HTML dan CSS kemudian dipublikasikan
+                        menggunakan GitHub Pages.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">GitHub Pages</span>
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="projects">
+    </section>
 
-            <div class="project">
-                <div class="icon">🌐</div>
-                <h3>Website Portfolio</h3>
-                <p>
-                    Website portfolio pribadi menggunakan
-                    HTML dan CSS yang di-deploy menggunakan
-                    GitHub Pages.
-                </p>
+
+    <!-- JOURNEY -->
+
+    <section id="journey">
+
+        <div class="section-container reveal">
+
+            <div class="section-label">
+                04 — PERJALANAN
             </div>
 
-            <div class="project">
-                <div class="icon">🐳</div>
-                <h3>Docker Web Server</h3>
-                <p>
-                    Membuat website menggunakan Docker,
-                    container, Nginx, volume, dan port mapping.
-                </p>
-            </div>
+            <h2 class="section-title">
+                Belajar sedikit demi sedikit.
+            </h2>
 
-            <div class="project">
-                <div class="icon">🔌</div>
-                <h3>Network Lab</h3>
-                <p>
-                    Praktik jaringan menggunakan Cisco,
-                    VLAN, DHCP, routing, SSH, dan subnetting.
-                </p>
-            </div>
+            <p class="section-desc">
+                Perjalanan belajar tidak selalu langsung berhasil.
+                Justru dari error dan troubleshooting banyak hal baru
+                yang bisa dipahami.
+            </p>
 
-            <div class="project">
-                <div class="icon">🐧</div>
-                <h3>Linux Server</h3>
-                <p>
-                    Praktik konfigurasi Linux server,
-                    Apache, DHCP, SSH, permission,
-                    dan user management.
-                </p>
-            </div>
 
-            <div class="project">
-                <div class="icon">📡</div>
-                <h3>Wireless Network</h3>
-                <p>
-                    Mempelajari konsep wireless,
-                    standar IEEE 802.11, access point,
-                    dan topologi jaringan.
-                </p>
-            </div>
+            <div class="timeline">
 
-            <div class="project">
-                <div class="icon">🚀</div>
-                <h3>Future Project</h3>
-                <p>
-                    Masih banyak project yang akan dibuat.
-                    Stay tuned untuk update berikutnya!
-                </p>
+                <div class="timeline-item">
+
+                    <small>TKJ</small>
+
+                    <h3>Mulai memahami jaringan komputer</h3>
+
+                    <p>
+                        Belajar mengenai IP address, subnetting,
+                        perangkat jaringan, topologi, dan konsep
+                        dasar komunikasi jaringan.
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <small>NETWORKING</small>
+
+                    <h3>Masuk ke konfigurasi jaringan</h3>
+
+                    <p>
+                        Mulai praktik VLAN, DHCP, routing,
+                        trunk, SSH, dan troubleshooting menggunakan
+                        Cisco Packet Tracer.
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <small>SERVER</small>
+
+                    <h3>Belajar Linux dan server</h3>
+
+                    <p>
+                        Mulai mengenal Linux, command line,
+                        permission, SSH, Apache, DHCP,
+                        dan konfigurasi service.
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <small>WEB & CLOUD</small>
+
+                    <h3>Membangun dan deploy website</h3>
+
+                    <p>
+                        Mempelajari HTML, CSS, Docker, GitHub,
+                        GitHub Pages, dan proses menghubungkan
+                        website dengan domain sendiri.
+                    </p>
+
+                </div>
+
             </div>
 
         </div>
+
     </section>
 
 
     <!-- CONTACT -->
-    <section id="contact">
 
-        <div class="contact">
+    <section>
 
-            <div class="section-title">
-                <h2>⚡ Let's Connect</h2>
-                <p>Terima kasih sudah mampir ke website saya!</p>
-            </div>
+        <div class="section-container reveal">
 
             <div class="contact-box">
 
-                <h2>Keep Learning. Keep Growing. 🚀</h2>
+                <h2>Masih dalam proses.</h2>
 
                 <p>
-                    Dunia teknologi terus berkembang.
-                    Saya juga akan terus belajar,
-                    mencoba hal baru, dan mengembangkan skill
-                    untuk menjadi lebih baik lagi.
+                    Website ini akan terus dikembangkan seiring
+                    bertambahnya pengalaman, skill, dan project baru.
+                    Untuk sekarang, saya masih terus belajar dan
+                    mencoba hal-hal baru di dunia teknologi.
                 </p>
 
                 <br>
 
-                <a href="#home" class="btn primary">
-                    ⬆ Kembali ke Atas
+                <a href="#home" class="btn btn-primary">
+                    Kembali ke atas
                 </a>
 
             </div>
@@ -634,12 +1208,104 @@
 
 
     <!-- FOOTER -->
+
     <footer>
-        © 2026 <span>Rifky Keefa Ramadhan</span> • XI TKJ 4 • TKJ
-        <br>
-        Built with 💻, ☕ & lots of curiosity.
+
+        <span>
+            © 2026 Rifky Keefa Ramadhan
+        </span>
+
+        <span>
+            XI TKJ 4 · Teknik Komputer & Jaringan
+        </span>
+
     </footer>
 
+
+    <script>
+
+        /* =========================
+           TYPING EFFECT
+        ========================= */
+
+        const words = [
+            "Teknik Komputer & Jaringan.",
+            "Networking Enthusiast.",
+            "Future Engineer."
+        ];
+
+        const typing = document.getElementById("typing");
+
+        let wordIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+
+        function typeEffect() {
+
+            const current = words[wordIndex];
+
+            if (!deleting) {
+
+                typing.textContent = current.substring(0, charIndex + 1);
+                charIndex++;
+
+                if (charIndex === current.length) {
+
+                    deleting = true;
+
+                    setTimeout(typeEffect, 1800);
+                    return;
+                }
+
+            } else {
+
+                typing.textContent = current.substring(0, charIndex - 1);
+                charIndex--;
+
+                if (charIndex === 0) {
+
+                    deleting = false;
+
+                    wordIndex++;
+
+                    if (wordIndex >= words.length) {
+                        wordIndex = 0;
+                    }
+                }
+            }
+
+            setTimeout(typeEffect, deleting ? 35 : 75);
+        }
+
+        typeEffect();
+
+
+        /* =========================
+           SCROLL REVEAL
+        ========================= */
+
+        const reveals = document.querySelectorAll(".reveal");
+
+        function revealOnScroll() {
+
+            reveals.forEach(element => {
+
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add("active");
+                }
+
+            });
+
+        }
+
+        window.addEventListener("scroll", revealOnScroll);
+
+        revealOnScroll();
+
+    </script>
 
 </body>
 </html>
